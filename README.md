@@ -22,7 +22,7 @@ Contributions are welcome! If you have suggestions, improvements, or find any is
 This plugin follows best practices for data handling and security. It sanitizes inputs, uses nonces for AJAX requests, and secures file operations to protect against vulnerabilities.
 
 ### License
-Licensed under the [GNU General Public License v3.0](link-to-license).
+Licensed under the [GNU General Public License v3.0](https://github.com/ithubdeveloper/user-activity-tracker/blob/main/LICENSE).
 
 ### Support
 For support or inquiries, please [submit an issue](https://github.com/ithubdeveloper/user-activity-tracker/issues)
