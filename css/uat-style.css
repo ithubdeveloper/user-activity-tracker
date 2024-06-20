@@ -1,0 +1,34 @@
+#uat-search {
+    margin-bottom: 10px;
+    padding: 0 5px;
+    width: 300px;
+}
+
+#uat-activity-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#uat-activity-table th,
+#uat-activity-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#uat-activity-table th {
+    background-color: #f4f4f4;
+}
+
+#uat-pagination {
+    margin-top: 10px;
+}
+
+#uat-pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+#uat-pagination span {
+    margin: 0 10px;
+    font-weight: bold;
+}
