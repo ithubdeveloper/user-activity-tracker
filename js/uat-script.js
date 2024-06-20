@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
                 action: 'uat_fetch_activities',
                 year: year,
                 month: month,
+                security: uat_ajax_object.security,
                 date: date,
                 page: currentPage,
                 search: searchTerm

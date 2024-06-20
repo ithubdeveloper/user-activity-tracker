@@ -1,11 +1,16 @@
 <?php
 /**
  * Plugin Name: User Activity Tracker
- * Description: Tracks and records backend user post/pages activities and saves them as JSON files on the server.
+ * Description: Tracks and records backend user activities and saves them as JSON files on the server.
  * Version: 1.0
- * Author: Saqib Akram
+ * Author: ithubdeveloper
+ * Author URI: https://github.com/ithubdeveloper/
  * Text Domain: user-activity-tracker
+ * Domain Path: /languages
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
+
 
 register_activation_hook(__FILE__, 'uat_activate');
 register_deactivation_hook(__FILE__, 'uat_deactivate');
@@ -35,6 +40,11 @@ function uat_enqueue_scripts() {
     wp_enqueue_script('jquery');
     wp_enqueue_script('uat-script', plugins_url('js/uat-script.js', __FILE__), array('jquery'), time(), true);
     wp_enqueue_style('uat-style', plugins_url('css/uat-style.css', __FILE__));
+    $ajax_nonce = wp_create_nonce('uat_fetch_activities_nonce');
+    wp_localize_script('uat-script', 'uat_ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'security' => $ajax_nonce,
+    ));
 }
 
 add_action('save_post', 'uat_record_activity');
@@ -150,6 +160,8 @@ function uat_display_page() {
 add_action('wp_ajax_uat_fetch_activities', 'uat_fetch_activities');
 
 function uat_fetch_activities() {
+    check_ajax_referer('uat_fetch_activities_nonce', 'security');
+
     $year = isset($_POST['year']) ? intval($_POST['year']) : date('Y');
     $month = isset($_POST['month']) ? $_POST['month'] : date('m');
     $date = isset($_POST['date']) ? $_POST['date'] : date('d');
@@ -193,5 +205,3 @@ function uat_fetch_activities() {
         'page' => $page
     ));
 }
-
-
